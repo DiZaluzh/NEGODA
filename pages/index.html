@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEGODA</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Luxurious+Script&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <script>
+      // Завантажуємо header
+      fetch("/includes/header.html")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+
+          // Після завантаження header, додаємо подію скролінгу
+          let lastScrollY = window.scrollY;
+          const headerElement = document.querySelector("header");
+
+          window.addEventListener("scroll", () => {
+            if (window.scrollY < lastScrollY) {
+              headerElement.style.top = "0";
+            } else {
+              headerElement.style.top = "-5rem";
+            }
+            lastScrollY = window.scrollY;
+          });
+
+          // Гамбургер-меню
+          const hamburger = document.getElementById("hamburger");
+          const navMenu = document.querySelector("nav");
+
+          // Перевірка на існування гамбургера (щоб уникнути помилок, якщо він не знайдений)
+          if (hamburger) {
+            hamburger.addEventListener("click", () => {
+              navMenu.classList.toggle("show"); // Додає або прибирає клас "show"
+
+              // Змінюємо символ гамбургера на хрестик і навпаки
+              if (hamburger.textContent === "\u2630") {
+                // Символ гамбургера (&#9776;)
+                hamburger.textContent = "\u2715"; // Хрестик (&#10005;)
+              } else {
+                hamburger.textContent = "\u2630"; // Гамбургер (&#9776;)
+              }
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("There was a problem with the fetch operation:", error);
+        });
+    </script>
+  </body>
+</html>
