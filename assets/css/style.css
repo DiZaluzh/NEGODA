@@ -13,6 +13,153 @@
 
 body {
     padding-top: 5rem;
+    overflow: auto;
+    
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.intro-block {
+    position: relative;
+    width: 100%;
+    height: 45rem;
+    background-image: url('/assets/img/main_cover.jpeg');
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Елементи зміщені ліворуч */
+    padding-left: 57%; 
+}
+
+.fullname, .pro, .intro-block button{
+    position: relative;
+    bottom: 10%;
+}
+
+.fullname, .pro  {
+    color: var(--beige-color);
+}
+
+.fullname {
+    letter-spacing: 0.4rem;
+    font-size: 4rem;
+}
+
+.name{
+    font-weight: 300;
+}
+
+.surname {
+    font-weight: 600;
+}
+
+.pro {
+    font-weight: 150;
+    letter-spacing: 0.2rem;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.intro-block button {
+    background-color: var(--beige-color);
+    border: none;
+    color: black;
+    font-size: 1.6rem;
+    letter-spacing: 0.2rem;
+    padding: 10px 20px;
+    border-radius: 4rem;
+    width: 18rem;
+    height: 4rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.intro-block button:hover{
+    background-color: black;
+    color: var(--beige-color);
+}
+
+.quote-block {
+    margin: 5rem;
+    background-color: white;
+    color: var(--blue-color);
+    font-size: 3rem;
+    letter-spacing: 1rem;
+    text-align: center;
+    font-weight: 100;
+}
+
+.about-me-block {
+    background-color: var(--beige-color);
+    display: flex;
+    align-items: stretch;
+    gap: 8rem;
+    padding: 10rem;
+    max-height: 70rem;
+}
+
+.about-me-block img{
+    height: auto;
+    flex: 1;
+    object-fit:cover;
+    max-width: 45%;
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.about-me-text{
+    flex: 1;
+    box-sizing: border-box;
+    display: flex;
+    overflow-y: auto; /* Додаємо вертикальний скролінг */
+    scrollbar-width: none;
+    padding: 4rem;
+    background-color: white;
+    flex-direction: column;
+    color: var(--blue-color);
+    text-align: justify;
+    box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.about-me-text h2{
+    font-family: "Luxurious Script", cursive;
+    font-weight: 200;
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 2rem;   
+}
+
+.about-me-text p{
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.8;
+}
+
+.about-me-text::-webkit-scrollbar {
+    display: none; /* Приховуємо скролбар для Chrome, Safari та інших WebKit-браузерів */
 }
 
 
+
+@media (max-width: 768px) {
+    .intro-block{
+        padding-left: 50%;
+        padding-top: 4%;
+    }
+    .fullname {
+        font-size: 2.5rem;
+    }
+    .pro {
+        font-size: 1.5rem;
+    }
+    .intro-block button{
+        font-size: 1.2rem;
+        border-radius: 4rem;
+        width: 15rem;
+        height: 3rem;
+    }
+    
+}
